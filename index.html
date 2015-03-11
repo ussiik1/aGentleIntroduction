@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Marionette</title>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-app">
+      <div class="navbar-inner">
+        <div class="container">
+          <span class="navbar-brand">Contact manager</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-region" class="container">
+      <p>静的な要素です！ここを書き換えていきます！</p>
+    </div>
+<!-- div#main-region end-->
+
+    <script type="text/template" id="contact-list-item">
+      <%= firstName %> <%= lastName %>
+    </script>
+
+<!-- ここから下にscriptタグ達 -->
+    <!-- Marionetteに必要なファイル -->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/json2/lib/JSON2/static/json2.js"></script>
+    <script src="./node_modules/backbone.marionette/node_modules/underscore/underscore.js"></script>
+    <script src="./node_modules/backbone.marionette/node_modules/backbone/backbone.js"></script>
+    <script src="./node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+
+    <!-- htmlに本来ベタ書きされてあるjsコード -->
+    <script src="./js/main.js"></script>
+
+  </body>
+</html>

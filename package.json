@@ -1,0 +1,17 @@
+{
+  "name": "aGentleIntroduction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "backbone.marionette": "^2.4.1",
+    "bootstrap": "^3.3.2",
+    "jquery": "^2.1.3",
+    "json2": "^0.4.0"
+  }
+}
