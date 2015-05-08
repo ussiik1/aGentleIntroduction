@@ -10,12 +10,13 @@ $(function(){
   });
 
   ContactManager.ContactCollection = Backbone.Collection.extend({
-    model: ContactManager.Contact
+    model: ContactManager.Contact,
+    comparator: 'firstName',
   });
 
   // ItemView
   ContactManager.ContactView = Marionette.ItemView.extend({
-    tagName: 'div',
+    tagName: 'li',
     template: '#contact-list-item',
     initialize: function(){
       console.log('ContactView:initialize',this.model.attributes);
@@ -27,7 +28,7 @@ $(function(){
 
   // CollectionView
   ContactManager.ContactsView = Marionette.CollectionView.extend({
-    tagName: 'div', // デフォルトでは div タグになります。
+    tagName: 'ul', // デフォルトでは div タグになります。
     childView: ContactManager.ContactView,
     initialize: function(){
       console.log('ContactsView:initialize\n',
