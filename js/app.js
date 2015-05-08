@@ -18,7 +18,9 @@ ContactManager.onStart = function(){
     Backbone.history.start();
     if (Backbone.history.fragment === '') {
       // URLを#contactsに変え, browserの履歴に追加する.
-      Backbone.history.navigate('contacts');
-      ContactManager.ContactsApp.List.Controller.listContacts();
-    }  }
+      //Backbone.history.navigate('contacts');
+      //ContactManager.ContactsApp.List.Controller.listContacts();
+      ContactManager.trigger('contacts:list');
+    }
+  }
 };
