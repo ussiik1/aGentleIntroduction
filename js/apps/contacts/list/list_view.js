@@ -8,6 +8,7 @@ ContactManager.module('ContactsApp.List', function(
     template: '#contact-list-item',
     events: {
       'click': 'highlightName',
+      'click td a.js-show': 'showClicked',
       // button要素のうち, js-deleteクラスのものがクリックされたら
       // 'deleteClicked'が呼ばれる
       'click button.js-delete': 'deleteClicked'
@@ -17,12 +18,15 @@ ContactManager.module('ContactsApp.List', function(
       * }
       */
     },
-
     highlightName: function(e){
       e.preventDefault();
       this.$el.toggleClass('warning');
     },
-
+    showClicked: function(e){
+      e.preventDefault(); // aタグのdefaultの挙動を制御.
+      e.stopPropagation(); // highlightNameイベントが起きないよう.
+      this.trigger('contact:show', this.model);
+    },
     deleteClicked: function(e){
       // イベントの伝播を止める.
       // * これがないと削除ボタンが押されたときに
@@ -33,7 +37,6 @@ ContactManager.module('ContactsApp.List', function(
       //this.model.collection.remove(this.model);
       this.trigger('contact:delete', this.model);
     },
-
     // このremoveメソッドは定義されていれば
     // 対応するmodelが削除された際に自動で呼ばれる.
     remove: function(){
@@ -47,6 +50,7 @@ ContactManager.module('ContactsApp.List', function(
       });
     }
   });
+
   List.Contacts = Marionette.CompositeView.extend({
     tagName: 'table',
     className: 'table table-hover',
