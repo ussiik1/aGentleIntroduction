@@ -11,6 +11,11 @@ ContactManager.module('ContactsApp.List', function(
         collection: contacts
       });
 
+      // 追加
+      contactsListView.on('childview:contact:delete', function(childView, model){
+        contacts.remove(model);
+      });
+
       ContactManager.mainRegion.show(contactsListView);
 
     }

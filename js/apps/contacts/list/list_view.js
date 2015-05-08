@@ -30,9 +30,22 @@ ContactManager.module('ContactsApp.List', function(
       e.stopPropagation();
       // あくまでこのViewはItemViewなのでmodelはcontact.
       // なのでcollectionに直でアクセスできないので下記のような書き方になる.
-      this.model.collection.remove(this.model);
-    }
+      //this.model.collection.remove(this.model);
+      this.trigger('contact:delete', this.model);
+    },
 
+    // このremoveメソッドは定義されていれば
+    // 対応するmodelが削除された際に自動で呼ばれる.
+    remove: function(){
+      // 下記の一行だけで書いた場合, 見かけ上は要素が消えたように見えるが
+      // HTMLを見ると要素はそこに残ったままになってしまう。(display:noneになるだけ)
+      // this.$el.fadeOut();
+      var self = this;
+      // fadeOutのコールバックに ItemViewクラスのremoveメソッドを呼ぶようにする
+      this.$el.fadeOut(function(){
+        Marionette.ItemView.prototype.remove.call(self);
+      });
+    }
   });
   List.Contacts = Marionette.CompositeView.extend({
     tagName: 'table',
