@@ -4,9 +4,11 @@ ContactManager.module('Entities', function(
 ){
 
   Entities.Contact = Backbone.Model.extend({
+    urlRoot: 'contacts'
   });
 
   Entities.ContactCollection = Backbone.Collection.extend({
+    url: 'contacts',
     model: Entities.Contact,
     comparator: 'firstName'
   });
