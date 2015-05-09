@@ -6,17 +6,18 @@ ContactManager.module('ContactsApp.Show', function(
   Show.Controller = {
 
     showContact: function(id){
-      var contacts = ContactManager.request('contact:entities');
-      var model = contacts.get(id);
+      // 修正
+      var contact = ContactManager.request('contact:entity', id);
       var contactView;
-      if (model !== undefined) {
-        contactView = new Show.Contact({ model: model });
+      // 修正
+      if (contact !== undefined) {
+        // 修正
+        contactView = new Show.Contact({ model: contact });
       } else {
         contactView = new Show.MissingContact();
       }
       ContactManager.mainRegion.show(contactView);
     }
-
   };
 
 });

@@ -45,6 +45,11 @@ ContactManager.module('Entities', function(
 
       if (!contacts.length) return initializeContact();
       return contacts;
+    },
+    getContactEntity: function(contactId) {
+      var contact = new Entities.Contact({ id: contactId });
+      contact.fetch();
+      return contact;
     }
   };
 
@@ -57,4 +62,8 @@ ContactManager.module('Entities', function(
     return API.getContactEntities();
   });
 
+  ContactManager.reqres.setHandler('contact:entity', function(id){
+    return API.getContactEntity(id);
+  });
+    
 });
