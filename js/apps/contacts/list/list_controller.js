@@ -17,7 +17,8 @@ ContactManager.module('ContactsApp.List', function(
       });
 
       contactsListView.on('childview:contact:delete', function(childView, model){
-        contacts.remove(model);
+        //contacts.remove(model);
+        model.destroy();
       });
 
       ContactManager.mainRegion.show(contactsListView);
