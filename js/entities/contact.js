@@ -28,11 +28,22 @@ ContactManager.module('Entities', function(
       { id: 3, firstName: 'Charlie', lastName: 'Campbell',
         phoneNumber: '555-0129' }
     ]);
+
+    contacts.forEach(function(contact){
+      contact.save();
+    });
+
+    return contacts;
   };
 
   var API = {
     getContactEntities: function() {
-      if (contacts === undefined) initializeContact();
+      //if (contacts === undefined) initializeContact();
+      //return contacts;
+      var contacts = new Entities.ContactCollection();
+      contacts.fetch();
+
+      if (!contacts.length) return initializeContact();
       return contacts;
     }
   };
